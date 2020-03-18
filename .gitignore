@@ -1,7 +1,4 @@
-/redis/redis-sample-client/target/
-/mongodb/mysql2mongodb/target/
 **/target/
 /**/target/
-dependency-reduced-pom.xml
-/MySQL/docker-mysql/dados
-/Redis/docker-redis/dados
+/MySQL/docker-mysql/dados/**
+/Redis/docker-redis/dados/**
