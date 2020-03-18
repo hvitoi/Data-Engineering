@@ -1,0 +1,19 @@
+docker pull mysql
+docker build -t hvitoi/mysql -f Dockerfile .
+docker run --name meu_mysql --rm -d hvitoi/mysql
+docker exec -i meu_mysql mysql -uroot -p123 < script.sql
+docker exec -it meu_mysql /bin/bash
+
+docker stop meu_mysql
+docker rm eddc8580b017
+docker rmi hvitoi/mysql
+
+
+
+
+-- RUN sem perder dados
+docker run --name meu_mysql --rm -d -v $(pwd)/dados:/var/lib/mysql hvitoi/mysql
+docker exec -i meu_mysql mysql -uroot -p123 < script.sql
+docker exec -it meu_mysql /bin/bash
+
+

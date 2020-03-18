@@ -3,3 +3,5 @@
 **/target/
 /**/target/
 dependency-reduced-pom.xml
+/MySQL/docker-mysql/dados
+/Redis/docker-redis/dados

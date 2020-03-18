@@ -1,0 +1,9 @@
+docker pull redis
+docker run --name meu_redis -d -p 6379:6379 redis
+docker exec -it meu_redis /bin/bash
+docker exec -it meu_redis redis-cli
+
+-- RUN sem perder dados
+docker run --name meu_redis -d -p 6379:6379 -v /home/hvitoi/Documents/docker-redis/dados:/data redis redis-server --appendonly yes
+docker exec -it meu_redis /bin/bash
+docker exec -it meu_redis redis-cli

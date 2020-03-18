@@ -1,12 +1,11 @@
-ECHO "list keys in your redis server"
-
+ECHO "List keys in your redis server"
 KEYS *
-KEYS demo.*
 
-ECHO "there is no command to create a key. Keys are created when key-value pairs are set."
-ECHO "I will create some key-value pairs"
 
-SET foos bar
+# There is no command to create a key. Keys are created when key-value pairs are set.
+
+# Create some key-value pairs
+SET foo bar
 SET demo.redis.cli.hello world
 SET demo.redis.cli.keys 12999030039
 
@@ -15,35 +14,30 @@ HSET demo.redis.cli.hash001 movieId 3 title "Shawshank Redemption" genres "Comed
 ZADD demo.redis.cli.10202-scoreboard 6 James 2 Shane 9 Ezekiel 1 Darwin
 PFADD demo.redis.cli.hll001 
 
+# List keys with conditions
 KEYS *
 KEYS demo.*
 
-ECHO "confirm the existence of a key"
-
+# Confirm the existence of a key
 EXISTS demo.redis.cli.hll001
 EXISTS demo.redis.cli.hll002s
 
-
-ECHO "confirm the TTL of a key"
+# Confirm the TTL (time to live) of a key. PTTL the same, but in ms.
 TTL demo.redis.cli.set0001
 PTTL demo.redis.cli.10202-scoreboard
 
-ECHO "set the TTL of a key"
+# Set the TTL of a key. PEXPIRE in ms.
+EXPIRE foos 5
+GET foos
+PEXPIRE mylist 3600000
 
-EXPIRE foos 5					# in seconds
-PEXPIRE mylist 3600000				# in milliseconds
-
-
-ECHO "delete a key" 
-
+# Delete a key
 DEL demo.redis.cli.keys
 
-
-ECHO "check the type of the value held by a key"
-
+# Check the type of the value held by a key
 TYPE demo.redis.cli.set0001
 TYPE demo.redis.cli.hash001
 TYPE demo.redis.cli.10202-scoreboard
 TYPE demo.redis.cli.hll001 
 
-ECHO "checkout out other commands for key management from the official command referent https://redis.io/commands#generic"
+# https://redis.io/commands#generic
